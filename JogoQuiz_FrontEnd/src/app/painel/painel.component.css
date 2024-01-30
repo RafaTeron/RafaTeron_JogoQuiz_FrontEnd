@@ -1,5 +1,5 @@
 .container {
-    padding-top: 25%;
+    padding-top: 10%;
     font-family: 'Courier New', Courier, monospace;
   }
   
@@ -13,4 +13,11 @@
     display: flex;
     justify-content: center;
     padding-top: 10px;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 300px; 
   }
