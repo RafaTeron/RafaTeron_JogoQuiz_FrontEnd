@@ -2,18 +2,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { TopoComponent } from './topo/topo.component';
+import { LoginTopoComponent } from './Login/login-topo/topo.component';
 import { CommonModule } from '@angular/common';
-import { PainelComponent } from './painel/painel.component';
-import { FooterComponent } from './footer/footer.component';
+import { LoginPainelComponent } from './Login/login-painel/painel.component';
+import { LoginFooterComponent } from './Login/login-footer/footer.component';
+import { LoginRootComponent } from './Login/login-root/login-root.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopoComponent,
-    PainelComponent,
-    FooterComponent
+    LoginTopoComponent,
+    LoginPainelComponent,
+    LoginFooterComponent,
+    LoginRootComponent
   ],
   imports: [
     BrowserModule,

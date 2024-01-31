@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './painel.component.html',
   styleUrl: './painel.component.css'
 })
-export class PainelComponent {
+export class LoginPainelComponent {
 }
