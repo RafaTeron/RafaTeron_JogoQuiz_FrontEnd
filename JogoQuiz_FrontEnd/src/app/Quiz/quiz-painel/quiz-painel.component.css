@@ -1,0 +1,23 @@
+.container {
+    padding-top: 10%;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .card-title{
+    color: aliceblue;
+    background-color: rgb(121, 146, 173);
+    border-radius: 5px;
+  }
+  
+  .button{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 300px; 
+  }
