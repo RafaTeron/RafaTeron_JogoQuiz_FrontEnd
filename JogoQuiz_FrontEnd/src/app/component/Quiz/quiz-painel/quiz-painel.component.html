@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title text-center"><strong>Quiz</strong></h5>
           <form>
-            <div class="form-group" *ngFor="let question of questions">
+            <div class="form-group" *ngFor="let question of questions | async">
               <label>{{ question.questionText }}</label>
               <div *ngFor="let answer of question.answers">
                 <input type="radio" name="question{{ question.id }}" [value]="answer.id">

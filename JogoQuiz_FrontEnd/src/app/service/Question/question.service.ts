@@ -3,51 +3,22 @@ import { Injectable } from '@angular/core';
 import { Question } from '../../model/question';
 import { Answer } from '../../model/answer';
 import { Category } from '../../model/enum/category'; // Certifique-se de que o caminho esteja correto
+import { first, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
+  private readonly API = '/assets/question.json';
+
   constructor(private httpClient: HttpClient) {}
 
-  list(): Question[] {
-    // Definindo a categoria
-    const category: Category = Category.CIENCIA;
-
-    // Criando respostas
-    const answers: Answer[] = [
-      {
-        id: 1,
-        answerText: "A) Oxigênio",
-        isCorrect: true
-      },
-      {
-        id: 2,
-        answerText: "B) Silício",
-        isCorrect: false
-      },
-      {
-        id: 3,
-        answerText: "C) Ferro",
-        isCorrect: false
-      }
-    ];
-
-    // Associando a pergunta às respostas
-    const question: Question = {
-      id: 1,
-      questionText: 'Qual é o elemento mais abundante na crosta terrestre?',
-      playersList: [],
-      answers: answers,
-      category: category
-    };
-
-    // Preenchendo a propriedade 'question' em cada resposta
-    answers.forEach(answer => {
-      answer.question = question;
-    });
-
-    return [question];
+  list() {
+    return this.httpClient.get<Question[]>(this.API)
+    .pipe(
+      first(),
+      tap(questions => console.log(questions))
+    );
   }
 }

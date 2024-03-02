@@ -20,39 +20,5 @@
           }
       ],
       "category": "CIENCIA"
-  },
-  {
-      "id": 2,
-      "questionText": "Qual jogador de futebol brasileiro é frequentemente chamado de 'O Fenômeno'?",
-      "answers": [
-          {
-              "id": 4,
-              "answerText": "A) Lionel Messi",
-              "isCorrect": false
-          },
-          {
-              "id": 5,
-              "answerText": "B) Cristiano Ronaldo",
-              "isCorrect": false
-          },
-          {
-              "id": 6,
-              "answerText": "C) Ronaldo Nazário",
-              "isCorrect": true
-          }
-      ],
-      "category": "ESPORTE"
-  },
-  {
-      "id": 5,
-      "questionText": "NOVA QUEST 01",
-      "answers": [],
-      "category": "ENTRETENIMENTO"
-  },
-  {
-      "id": 6,
-      "questionText": "NOVA QUEST 02",
-      "answers": [],
-      "category": "ENTRETENIMENTO"
   }
 ]

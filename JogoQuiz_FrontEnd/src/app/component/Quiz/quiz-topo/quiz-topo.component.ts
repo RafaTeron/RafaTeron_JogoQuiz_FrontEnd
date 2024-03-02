@@ -9,10 +9,5 @@ import { QuestionService } from '../../../service/Question/question.service';
 })
 export class QuizTopoComponent {
 
-  questions: Question[] = [];
-
-
-  constructor(private questionService: QuestionService){
-    this.questions = this.questionService.list();
-  }
+  constructor(){}
 }

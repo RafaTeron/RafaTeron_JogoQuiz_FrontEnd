@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from '../../../model/question';
 import { QuestionService } from '../../../service/Question/question.service';
-import { Answer } from '../../../model/answer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-painel',
@@ -10,7 +10,7 @@ import { Answer } from '../../../model/answer';
 })
 export class QuizPainelComponent {
 
-  questions: Question[] = [];
+  questions: Observable<Question[]>;
 
   constructor(private questionService: QuestionService){
     this.questions = this.questionService.list();
