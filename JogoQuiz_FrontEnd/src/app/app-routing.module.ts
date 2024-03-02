@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
-import { LoginRootComponent } from "./Login/login-root/login-root.component";
-import { QuizRootComponent } from "./Quiz/quiz-root/quiz-root.component";
+import { LoginRootComponent } from "./component/Login/login-root/login-root.component";
+import { QuizRootComponent } from "./component/Quiz/quiz-root/quiz-root.component";
 import { NgModule } from "@angular/core";
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
       component: LoginRootComponent,
     }
   ];
-  
+
   @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]

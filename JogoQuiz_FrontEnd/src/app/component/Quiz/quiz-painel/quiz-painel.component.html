@@ -3,10 +3,10 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title text-center"><strong>Login</strong></h5>
+            <h5 class="card-title text-center"><strong>Quiz</strong></h5>
             <form>
               <div class="form-group">
-                <label for="email"><strong>Email</strong></label>
+                <label *ngFor="let question of questions">{{ question.questionText }}</label>
                 <input
                   type="email"
                   class="form-control"
@@ -34,4 +34,3 @@
       </div>
     </div>
   </div>
-  
