@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from '../../../model/question';
 import { QuestionService } from '../../../service/Question/question.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-painel',
@@ -13,7 +13,7 @@ export class QuizPainelComponent {
   questions: Observable<Question[]>;
 
   constructor(private questionService: QuestionService){
-    this.questions = this.questionService.list();
+    this.questions = this.questionService.findAll();
   }
 
 }

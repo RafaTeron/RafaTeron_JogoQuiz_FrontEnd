@@ -9,15 +9,14 @@ import { delay, first, tap } from 'rxjs';
 })
 export class QuestionService {
 
-  private readonly API = '/assets/question.json';
+  private readonly API = 'quiz/question';
 
   constructor(private httpClient: HttpClient) { }
 
-  list() {
+  findAll() {
     return this.httpClient.get<Question[]>(this.API)
       .pipe(
         first(),
-        delay(2000),
         tap(questions => console.log(questions))
       );
   }
