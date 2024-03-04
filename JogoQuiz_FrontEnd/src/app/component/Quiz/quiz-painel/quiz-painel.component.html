@@ -3,25 +3,23 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <div *ngFor="let question of questions | async">
+          <div *ngIf="questionFindById | async as question; else loading">
             <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
-          </div>
-          <form>
-            <div *ngIf="questions | async as question; else loading">
-              <div class="form-group" *ngFor="let question of questions | async">
+            <form>
+              <div class="form-group">
                 <label>{{ question.questionText }}</label>
                 <div *ngFor="let answer of question.answers">
                   <input type="radio" name="question{{ question.id }}" [value]="answer.id">
                   <label>{{ answer.answerText }}</label>
                 </div>
               </div>
-            </div>
-            <div class="button">
-              <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
-                <a routerLink="/Quiz" class="navbar-brand mb-0"><strong>Entrar</strong></a>
-              </button>
-            </div>
-          </form>
+              <div class="button">
+                <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
+                  <a routerLink="/Quiz" class="navbar-brand mb-0"><strong>Entrar</strong></a>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
 
         <ng-template #loading>

@@ -10,10 +10,14 @@ import { Observable, catchError, of } from 'rxjs';
 })
 export class QuizPainelComponent {
 
-  questions: Observable<Question[]>;
+  id: number;
+  questionFindAll: Observable<Question[]>;
+  questionFindById: Observable<Question>;
 
-  constructor(private questionService: QuestionService){
-    this.questions = this.questionService.findAll();
+  constructor(private questionService: QuestionService) {
+    this.id = 2;
+    this.questionFindAll = this.questionService.findAll();
+    this.questionFindById = this.questionService.findById(this.id);
   }
 
 }

@@ -20,4 +20,9 @@ export class QuestionService {
         tap(questions => console.log(questions))
       );
   }
+
+  findById(id: number) {
+    const url = `${this.API}/${id}`;
+    return this.httpClient.get<Question>(url);
+  }
 }
