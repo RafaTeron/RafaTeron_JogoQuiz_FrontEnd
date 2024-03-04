@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from '../../../model/question';
 import { QuestionService } from '../../../service/Question/question.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-topo',
@@ -9,5 +10,5 @@ import { QuestionService } from '../../../service/Question/question.service';
 })
 export class QuizTopoComponent {
 
-  constructor(){}
+
 }
