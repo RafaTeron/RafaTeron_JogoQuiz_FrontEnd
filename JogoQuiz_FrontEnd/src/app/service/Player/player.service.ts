@@ -22,4 +22,8 @@ export class PlayerService {
     return this.httpClient.get<boolean>(url, { params: { opcao: opcao.toString() } });
   }
 
+  gerarQuetion(id:number) {
+    const url = `${this.API}/${id}/gerarQuestion`;
+    return this.httpClient.post<void>(url, {});
+  }
 }

@@ -1,6 +1,9 @@
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
+      <input (click)="playerGerarQuestion()" class="btn btn-primary" type="button" value="Gerar Pergunta">
+
       <div class="card">
         <div class="card-body">
           <div *ngIf="playerFindById | async as player; else loading">

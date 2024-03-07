@@ -39,6 +39,7 @@ export class QuizPainelComponent {
           } else {
             alert('Resposta errada!');
           }
+          //this.playerGerarQuestion()
         },
         error: error => {
           console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -47,6 +48,18 @@ export class QuizPainelComponent {
     } else {
       alert('Selecione uma opção antes de conferir a resposta.');
     }
+  }
+
+  playerGerarQuestion() {
+    this.playerService.gerarQuetion(this.id).subscribe({
+      next: () => {
+          alert('Pergunta gerada com sucesso!');
+        },
+        error: error => {
+        console.error('Ocorreu um erro ao conferir a resposta:', error);
+        alert('Erro ao gerar a pergunta.');
+      }
+    });
   }
 
 }
