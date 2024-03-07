@@ -13,6 +13,7 @@ import { QuizPainelComponent } from './component/Quiz/quiz-painel/quiz-painel.co
 import { QuizTopoComponent } from './component/Quiz/quiz-topo/quiz-topo.component';
 import { QuizRootComponent } from './component/Quiz/quiz-root/quiz-root.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })
