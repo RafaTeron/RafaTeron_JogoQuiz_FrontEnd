@@ -2,7 +2,7 @@ import { PlayerService } from './../../../service/Player/player.service';
 import { Component } from '@angular/core';
 import { Question } from '../../../model/question';
 import { QuestionService } from '../../../service/Question/question.service';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Player } from '../../../model/player';
 
 @Component({
@@ -19,7 +19,7 @@ export class QuizPainelComponent {
   playerFindById: Observable<Player>;
 
   constructor(private playerService: PlayerService) {
-    this.id = 5;
+    this.id = 6;
     //this.questionFindAll = this.questionService.findAll();
     //this.questionFindById = this.questionService.findById(this.id);
 

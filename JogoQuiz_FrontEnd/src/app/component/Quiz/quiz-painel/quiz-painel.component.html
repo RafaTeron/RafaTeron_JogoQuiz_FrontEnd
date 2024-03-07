@@ -7,6 +7,9 @@
             <ng-container *ngFor="let question of player.question">
               <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
               <form>
+                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" [style.width.%]="player.pointScore">{{ player.pointScore }}%</div>
+                </div>
                 <div class="form-group">
                   <label>{{ question.questionText }}</label>
                   <div *ngFor="let answer of question.answers">
