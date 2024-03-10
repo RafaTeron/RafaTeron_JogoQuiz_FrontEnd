@@ -13,6 +13,8 @@ export class QuizPainelComponent implements OnInit{
   id: number;
   selectedOption: number | undefined;
   playerFindById: Observable<Player>;
+  timeoutId: any
+
 
   constructor(private playerService: PlayerService,private changeDetectorRef: ChangeDetectorRef) {
     this.id = 6;
@@ -33,6 +35,10 @@ export class QuizPainelComponent implements OnInit{
             alert('Resposta errada!');
           }
           this.playerGerarQuestion();
+
+          this.timeoutId = setTimeout(() => {
+            this.atualizarQuestion();
+          }, 5000);
         },
         error: error => {
           console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -47,8 +53,6 @@ export class QuizPainelComponent implements OnInit{
     this.playerService.gerarQuetion(this.id).subscribe({
       next: () => {
           alert('Pergunta gerada com sucesso!');
-          this.atualizarQuestion();
-
         },
         error: error => {
         console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -60,6 +64,14 @@ export class QuizPainelComponent implements OnInit{
   atualizarQuestion() {
     this.playerFindById = this.playerService.findById(this.id);
     this.changeDetectorRef.detectChanges();
+  }
+
+  proximo() {
+    if (this.timeoutId !== undefined) {
+      clearTimeout(this.timeoutId);
+    }
+
+    this.atualizarQuestion();
   }
 }
 

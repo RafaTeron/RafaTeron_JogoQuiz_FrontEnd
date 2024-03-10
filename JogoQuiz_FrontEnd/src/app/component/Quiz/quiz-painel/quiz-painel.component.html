@@ -16,8 +16,9 @@
                 <div class="form-group">
                   <label>{{ question.questionText }}</label>
                   <div *ngFor="let answer of question.answers">
-                    <input  type="radio" name="question{{ question.id }}" [value]="answer.id" [(ngModel)]="selectedOption">
-                    <label >{{ answer.answerText }}</label>
+                    <input type="radio" name="question{{ question.id }}" [value]="answer.id"
+                      [(ngModel)]="selectedOption">
+                    <label>{{ answer.answerText }}</label>
                   </div>
                 </div>
 
@@ -25,6 +26,10 @@
                   <button (click)="checkAnswer()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
                     <strong>Conferir Resposta</strong>
                   </button>
+                </div>
+                <div class="button d-flex justify-content-center">
+                    <button  (click)="proximo()" type="button" class="btn btn-secondary btn-sm "><strong>Próximo</strong>
+                    </button>
                 </div>
               </form>
             </ng-container>
