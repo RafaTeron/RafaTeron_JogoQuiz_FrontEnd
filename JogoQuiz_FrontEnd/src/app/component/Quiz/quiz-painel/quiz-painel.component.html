@@ -1,8 +1,6 @@
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <input (click)="playerGerarQuestion()" class="btn btn-primary" type="button" value="Gerar Pergunta">
 
       <div class="card">
         <div class="card-body">
@@ -10,20 +8,21 @@
             <ng-container *ngFor="let question of player.question">
               <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
               <form>
+
                 <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar" [style.width.%]="player.pointScore">{{ player.pointScore }}%</div>
                 </div>
+
                 <div class="form-group">
                   <label>{{ question.questionText }}</label>
                   <div *ngFor="let answer of question.answers">
-                    <input type="radio" name="question{{ question.id }}" [value]="answer.id"
-                      [(ngModel)]="selectedOption">
-                    <label>{{ answer.answerText }}</label>
+                    <input  type="radio" name="question{{ question.id }}" [value]="answer.id" [(ngModel)]="selectedOption">
+                    <label >{{ answer.answerText }}</label>
                   </div>
                 </div>
+
                 <div class="button">
-                  <button (click)="checkAnswer()" data-mdb-ripple-init type="button"
-                    class="btn btn-primary btn-block">
+                  <button (click)="checkAnswer()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
                     <strong>Conferir Resposta</strong>
                   </button>
                 </div>
@@ -33,9 +32,9 @@
         </div>
 
         <ng-template #loading>
-          <div class="d-flex justify-content-center ">
+          <div class="d-flex justify-content-center">
             <div class="spinner-border m-5 text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
+              <span class="visually-hidden">Carregando...</span>
             </div>
           </div>
         </ng-template>

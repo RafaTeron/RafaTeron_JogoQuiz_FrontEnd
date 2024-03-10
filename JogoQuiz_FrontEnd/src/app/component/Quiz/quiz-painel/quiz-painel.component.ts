@@ -1,7 +1,5 @@
 import { PlayerService } from './../../../service/Player/player.service';
-import { Component } from '@angular/core';
-import { Question } from '../../../model/question';
-import { QuestionService } from '../../../service/Question/question.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Player } from '../../../model/player';
 
@@ -10,25 +8,20 @@ import { Player } from '../../../model/player';
   templateUrl: './quiz-painel.component.html',
   styleUrl: './quiz-painel.component.css'
 })
-export class QuizPainelComponent {
+export class QuizPainelComponent implements OnInit{
 
   id: number;
   selectedOption: number | undefined;
-
-  //questionFindAll: Observable<Question[]>;
-  //questionFindById: Observable<Question>;
-
   playerFindById: Observable<Player>;
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService,private changeDetectorRef: ChangeDetectorRef) {
     this.id = 6;
-
-    //this.questionFindAll = this.questionService.findAll();
-    //this.questionFindById = this.questionService.findById(this.id);
-
     this.playerFindById = this.playerService.findById(this.id);
-
   }
+
+  ngOnInit(): void {
+  }
+
 
   checkAnswer() {
     if (this.selectedOption !== undefined) {
@@ -39,7 +32,7 @@ export class QuizPainelComponent {
           } else {
             alert('Resposta errada!');
           }
-          //this.playerGerarQuestion()
+          this.playerGerarQuestion();
         },
         error: error => {
           console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -54,6 +47,8 @@ export class QuizPainelComponent {
     this.playerService.gerarQuetion(this.id).subscribe({
       next: () => {
           alert('Pergunta gerada com sucesso!');
+          this.atualizarQuestion();
+
         },
         error: error => {
         console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -62,4 +57,9 @@ export class QuizPainelComponent {
     });
   }
 
+  atualizarQuestion() {
+    this.playerFindById = this.playerService.findById(this.id);
+    this.changeDetectorRef.detectChanges();
+  }
 }
+
