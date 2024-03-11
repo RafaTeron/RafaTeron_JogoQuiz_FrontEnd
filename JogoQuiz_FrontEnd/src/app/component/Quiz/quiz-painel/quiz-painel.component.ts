@@ -73,5 +73,7 @@ export class QuizPainelComponent implements OnInit{
 
     this.atualizarQuestion();
   }
+
+
 }
 

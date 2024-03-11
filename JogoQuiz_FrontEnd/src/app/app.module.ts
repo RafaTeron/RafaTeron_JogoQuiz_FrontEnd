@@ -14,6 +14,8 @@ import { QuizTopoComponent } from './component/Quiz/quiz-topo/quiz-topo.componen
 import { QuizRootComponent } from './component/Quiz/quiz-root/quiz-root.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { OrderByPipe } from './shared/Pipes/order-by.pipe';
+
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     QuizPainelComponent,
     QuizTopoComponent,
     QuizRootComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
