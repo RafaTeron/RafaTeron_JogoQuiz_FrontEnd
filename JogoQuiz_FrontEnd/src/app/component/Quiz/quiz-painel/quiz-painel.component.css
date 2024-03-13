@@ -22,6 +22,12 @@
     height: 300px;
   }
 
+  .correct-answer {
+    color: green;
+  }
 
+  .wrong-answer {
+    color: red;
+  }
 
 

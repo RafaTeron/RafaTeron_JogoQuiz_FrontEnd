@@ -18,7 +18,9 @@
                   <div *ngFor="let answer of question.answers | orderBy">
                     <input type="radio" name="question{{ question.id }}" [value]="answer.id"
                       [(ngModel)]="selectedOption">
-                    <label>{{ answer.answerText }}</label>
+                    <label [ngClass]="getAnswerColor(answer.id)">
+                      {{ answer.answerText }}
+                    </label>
                   </div>
                 </div>
 
@@ -28,8 +30,8 @@
                   </button>
                 </div>
                 <div class="button d-flex justify-content-center">
-                    <button  (click)="proximo()" type="button" class="btn btn-secondary btn-sm "><strong>Próximo</strong>
-                    </button>
+                  <button (click)="proximo()" type="button" class="btn btn-secondary btn-sm "><strong>Próximo</strong>
+                  </button>
                 </div>
               </form>
             </ng-container>

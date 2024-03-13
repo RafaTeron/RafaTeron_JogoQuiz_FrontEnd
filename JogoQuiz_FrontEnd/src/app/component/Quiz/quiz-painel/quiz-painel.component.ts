@@ -8,15 +8,16 @@ import { Player } from '../../../model/player';
   templateUrl: './quiz-painel.component.html',
   styleUrl: './quiz-painel.component.css'
 })
-export class QuizPainelComponent implements OnInit{
+export class QuizPainelComponent implements OnInit {
 
   id: number;
-  selectedOption: number | undefined;
+  selectedOption!: number;
   playerFindById: Observable<Player>;
   timeoutId: any
+  answerColors: { [key: number]: string } = {};
 
 
-  constructor(private playerService: PlayerService,private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef) {
     this.id = 6;
     this.playerFindById = this.playerService.findById(this.id);
   }
@@ -26,9 +27,12 @@ export class QuizPainelComponent implements OnInit{
 
 
   checkAnswer() {
-    if (this.selectedOption !== undefined) {
+    if (this.selectedOption !== null) {
       this.playerService.conferirResposta(this.id, this.selectedOption).subscribe({
         next: resposta => {
+          const color = resposta ? 'correct-answer' : 'wrong-answer';
+          this.answerColors[this.selectedOption] = color;
+
           if (resposta) {
             alert('Resposta correta!');
           } else {
@@ -52,9 +56,9 @@ export class QuizPainelComponent implements OnInit{
   playerGerarQuestion() {
     this.playerService.gerarQuetion(this.id).subscribe({
       next: () => {
-          alert('Pergunta gerada com sucesso!');
-        },
-        error: error => {
+        alert('Pergunta gerada com sucesso!');
+      },
+      error: error => {
         console.error('Ocorreu um erro ao conferir a resposta:', error);
         alert('Erro ao gerar a pergunta.');
       }
@@ -75,5 +79,8 @@ export class QuizPainelComponent implements OnInit{
   }
 
 
-}
+  getAnswerColor(answerId: number): string {
+    return this.answerColors[answerId] || '';
+  }
 
+}
