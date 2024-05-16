@@ -1,33 +1,115 @@
 .container {
-    padding-top: 10%;
-    font-family: 'Courier New', Courier, monospace;
+  padding-top: 10%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card-title {
+  color: aliceblue;
+  background-color: rgb(121, 146, 173);
+  border-radius: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.correct-answer {
+  color: green;
+}
+
+.wrong-answer {
+  color: red;
+}
+
+.container {
+  padding-top: 10%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card-title {
+  color: aliceblue;
+  background-color: rgb(121, 146, 173);
+  border-radius: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.correct-answer {
+  color: green;
+}
+
+.wrong-answer {
+  color: red;
+}
+
+.spinner {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  height: 30px; /* Ajuste conforme necessário */
+}
+
+#loading {
+  position: relative;
+  display: inline-block;
+}
+
+#loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #000000;
+  animation: spinner 10s linear infinite;
+}
+
+.countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #000000;
+}
+
+@keyframes spinner {
+  0% {
+    border-color: #000000 #000000 #000000 #000000;
   }
-
-  .card-title{
-    color: aliceblue;
-    background-color: rgb(121, 146, 173);
-    border-radius: 5px;
+  25% {
+    border-color: #000000 transparent transparent transparent;
   }
-
-  .button{
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
+  50% {
+    border-color: #000000 #000000 transparent transparent;
   }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 300px;
+  75% {
+    border-color: #000000 #000000 #000000 transparent;
   }
-
-  .correct-answer {
-    color: green;
+  100% {
+    border-color: #000000 #000000 #000000 #000000;
   }
-
-  .wrong-answer {
-    color: red;
-  }
-
-
+}

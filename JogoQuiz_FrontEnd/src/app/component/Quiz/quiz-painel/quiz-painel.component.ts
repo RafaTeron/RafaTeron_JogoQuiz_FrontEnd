@@ -13,18 +13,19 @@ export class QuizPainelComponent implements OnInit {
   id: number;
   selectedOption!: number;
   playerFindById: Observable<Player>;
-  timeoutId: any
+  timeoutId: any;
   answerColors: { [key: number]: string } = {};
-
+  countdownValue: number = 10;  // Valor inicial da contagem regressiva
+  showSpinner: boolean = false; // Propriedade para controlar a exibição do spinner
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef) {
-    this.id = 6;
+    this.id = 1;
     this.playerFindById = this.playerService.findById(this.id);
   }
 
   ngOnInit(): void {
+    // Remova a inicialização da contagem regressiva daqui
   }
-
 
   checkAnswer() {
     if (this.selectedOption !== null) {
@@ -34,15 +35,19 @@ export class QuizPainelComponent implements OnInit {
           this.answerColors[this.selectedOption] = color;
 
           if (resposta) {
-            alert('Resposta correta!');
+            //alert('Resposta correta!');
           } else {
-            alert('Resposta errada!');
+            //alert('Resposta errada!');
           }
           this.playerGerarQuestion();
 
           this.timeoutId = setTimeout(() => {
             this.atualizarQuestion();
-          }, 5000);
+          }, 10000);
+
+          // Inicia a contagem regressiva e exibe o spinner
+          this.showSpinner = true;
+          this.startCountdown();
         },
         error: error => {
           console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -56,11 +61,11 @@ export class QuizPainelComponent implements OnInit {
   playerGerarQuestion() {
     this.playerService.gerarQuetion(this.id).subscribe({
       next: () => {
-        alert('Pergunta gerada com sucesso!');
+        //alert('Pergunta gerada com sucesso!');
       },
       error: error => {
         console.error('Ocorreu um erro ao conferir a resposta:', error);
-        alert('Erro ao gerar a pergunta.');
+        //alert('Erro ao gerar a pergunta.');
       }
     });
   }
@@ -78,9 +83,19 @@ export class QuizPainelComponent implements OnInit {
     this.atualizarQuestion();
   }
 
-
   getAnswerColor(answerId: number): string {
     return this.answerColors[answerId] || '';
   }
 
+  startCountdown() {
+    this.countdownValue = 10;  // Reinicia a contagem regressiva
+    const interval = setInterval(() => {
+      this.countdownValue--;
+      this.changeDetectorRef.detectChanges();  // Atualiza a exibição da contagem regressiva
+      if (this.countdownValue <= 0) {
+        clearInterval(interval);
+        this.showSpinner = false;  // Esconde o spinner quando a contagem terminar
+      }
+    }, 1000);
+  }
 }
