@@ -15,8 +15,8 @@ export class QuizPainelComponent implements OnInit {
   playerFindById: Observable<Player>;
   timeoutId: any;
   answerColors: { [key: number]: string } = {};
-  countdownValue: number = 10;  // Valor inicial da contagem regressiva
-  showSpinner: boolean = false; // Propriedade para controlar a exibição do spinner
+  countdownValue: number = 10;
+  showSpinner: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef) {
     this.id = 1;
@@ -24,7 +24,6 @@ export class QuizPainelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Remova a inicialização da contagem regressiva daqui
   }
 
   checkAnswer() {
@@ -34,18 +33,12 @@ export class QuizPainelComponent implements OnInit {
           const color = resposta ? 'correct-answer' : 'wrong-answer';
           this.answerColors[this.selectedOption] = color;
 
-          if (resposta) {
-            //alert('Resposta correta!');
-          } else {
-            //alert('Resposta errada!');
-          }
           this.playerGerarQuestion();
 
           this.timeoutId = setTimeout(() => {
             this.atualizarQuestion();
           }, 10000);
 
-          // Inicia a contagem regressiva e exibe o spinner
           this.showSpinner = true;
           this.startCountdown();
         },
@@ -61,11 +54,10 @@ export class QuizPainelComponent implements OnInit {
   playerGerarQuestion() {
     this.playerService.gerarQuetion(this.id).subscribe({
       next: () => {
-        //alert('Pergunta gerada com sucesso!');
       },
       error: error => {
         console.error('Ocorreu um erro ao conferir a resposta:', error);
-        //alert('Erro ao gerar a pergunta.');
+        alert('Erro ao gerar a pergunta.');
       }
     });
   }
@@ -79,6 +71,8 @@ export class QuizPainelComponent implements OnInit {
     if (this.timeoutId !== undefined) {
       clearTimeout(this.timeoutId);
     }
+
+    this.showSpinner = false;
 
     this.atualizarQuestion();
   }

@@ -41,12 +41,6 @@
   border-radius: 5px;
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
 .card-body {
   display: flex;
   flex-direction: column;
@@ -60,12 +54,6 @@
 
 .wrong-answer {
   color: red;
-}
-
-.spinner {
-  display: flex;
-  align-items: center; /* Alinha verticalmente */
-  height: 30px; /* Ajuste conforme necessário */
 }
 
 #loading {

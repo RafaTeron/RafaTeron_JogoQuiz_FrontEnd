@@ -29,11 +29,11 @@
                     <strong>Conferir Resposta</strong>
                   </button>
                 </div>
-                <div *ngIf="showSpinner" class="spinner">
-                  <span id="loading" class="countdown">{{ countdownValue }}</span>
-                </div>
+
                 <div class="button d-flex justify-content-center">
-                  <button (click)="proximo()" type="button" class="btn btn-secondary btn-sm "><strong>Próximo</strong>
+                  <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-secondary btn-sm ">
+                    <strong>Próximo</strong>
+                    <span  id="loading" class="countdown">{{ countdownValue }}</span>
                   </button>
                 </div>
               </form>
