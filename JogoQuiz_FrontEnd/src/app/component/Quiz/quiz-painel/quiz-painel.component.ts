@@ -39,6 +39,7 @@ export class QuizPainelComponent implements OnInit {
             this.atualizarQuestion();
           }, 10000);
 
+          this.finishPerguntasRespondidas();
           this.showSpinner = true;
           this.startCountdown();
         },
@@ -77,18 +78,29 @@ export class QuizPainelComponent implements OnInit {
     this.atualizarQuestion();
   }
 
+  finishPerguntasRespondidas() {
+    this.playerService.verificarLimitePerguntasRespondidas(this.id)
+      .subscribe((limite: boolean) => {
+        if (limite === true) {
+          alert('TRUE');
+        } else {
+          alert('FALSE')
+        }
+      });
+  }
+
   getAnswerColor(answerId: number): string {
     return this.answerColors[answerId] || '';
   }
 
   startCountdown() {
-    this.countdownValue = 10;  // Reinicia a contagem regressiva
+    this.countdownValue = 10;
     const interval = setInterval(() => {
       this.countdownValue--;
-      this.changeDetectorRef.detectChanges();  // Atualiza a exibição da contagem regressiva
+      this.changeDetectorRef.detectChanges();
       if (this.countdownValue <= 0) {
         clearInterval(interval);
-        this.showSpinner = false;  // Esconde o spinner quando a contagem terminar
+        this.showSpinner = false;
       }
     }, 1000);
   }

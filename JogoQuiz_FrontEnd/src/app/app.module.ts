@@ -15,6 +15,10 @@ import { QuizRootComponent } from './component/Quiz/quiz-root/quiz-root.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OrderByPipe } from './shared/Pipes/order-by.pipe';
+import { FinishFolderComponent } from './component/Finish/finish-folder/finish-folder.component';
+import { FinishPainelComponent } from './component/Finish/finish-painel/finish-painel.component';
+import { FinishRootComponent } from './component/Finish/finish-root/finish-root.component';
+import { FinishTopoComponent } from './component/Finish/finish-topo/finish-topo.component';
 
 
 
@@ -29,6 +33,10 @@ import { OrderByPipe } from './shared/Pipes/order-by.pipe';
     QuizPainelComponent,
     QuizTopoComponent,
     QuizRootComponent,
+    FinishFolderComponent,
+    FinishPainelComponent,
+    FinishRootComponent,
+    FinishTopoComponent,
     OrderByPipe
   ],
   imports: [

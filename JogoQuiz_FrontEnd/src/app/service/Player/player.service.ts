@@ -26,4 +26,9 @@ export class PlayerService {
     const url = `${this.API}/${id}/gerarQuestion`;
     return this.httpClient.post<void>(url, {});
   }
+
+  verificarLimitePerguntasRespondidas(id:number) {
+    const url = `${this.API}/${id}/limitePerguntasRespondidas`;
+    return this.httpClient.get<boolean>(url);
+  }
 }
