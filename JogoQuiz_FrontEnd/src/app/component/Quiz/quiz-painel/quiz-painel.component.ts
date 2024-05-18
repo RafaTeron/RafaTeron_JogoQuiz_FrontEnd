@@ -18,6 +18,7 @@ export class QuizPainelComponent implements OnInit {
   answerColors: { [key: number]: string } = {};
   countdownValue: number = 10;
   showSpinner: boolean = false;
+  showResult: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
@@ -83,9 +84,15 @@ export class QuizPainelComponent implements OnInit {
     this.playerService.verificarLimitePerguntasRespondidas(this.id)
       .subscribe((limite: boolean) => {
         if (limite === false) {
-          this.router.navigate(['/Finish']);
+          this.showSpinner = false;
+          this.showResult = true;
+          this.atualizarQuestion();
         }
       });
+  }
+
+  resultado(){
+    this.router.navigate(['/Finish']);
   }
 
   getAnswerColor(answerId: number): string {

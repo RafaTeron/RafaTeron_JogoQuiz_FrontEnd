@@ -36,6 +36,12 @@
                     <span  id="loading" class="countdown">{{ countdownValue }}</span>
                   </button>
                 </div>
+
+                <div class="button d-flex justify-content-center">
+                  <button *ngIf="showResult" (click)="resultado()" type="button" class="btn btn-secondary btn-sm ">
+                    <strong>Resultado</strong>
+                  </button>
+                </div>
               </form>
             </ng-container>
           </div>
