@@ -2,6 +2,7 @@ import { PlayerService } from './../../../service/Player/player.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Player } from '../../../model/player';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-painel',
@@ -18,7 +19,7 @@ export class QuizPainelComponent implements OnInit {
   countdownValue: number = 10;
   showSpinner: boolean = false;
 
-  constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
     this.playerFindById = this.playerService.findById(this.id);
   }
@@ -81,10 +82,8 @@ export class QuizPainelComponent implements OnInit {
   finishPerguntasRespondidas() {
     this.playerService.verificarLimitePerguntasRespondidas(this.id)
       .subscribe((limite: boolean) => {
-        if (limite === true) {
-          alert('TRUE');
-        } else {
-          alert('FALSE')
+        if (limite === false) {
+          this.router.navigate(['/Finish']);
         }
       });
   }
