@@ -24,4 +24,6 @@ export class FinishPainelComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 }
