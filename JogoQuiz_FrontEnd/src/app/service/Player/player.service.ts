@@ -31,4 +31,9 @@ export class PlayerService {
     const url = `${this.API}/${id}/limitePerguntasRespondidas`;
     return this.httpClient.get<boolean>(url);
   }
+
+  resetQuizPlayer(id:number){
+    const url = `${this.API}/${id}/reset-quiz`;
+    return this.httpClient.delete<void>(url);
+  }
 }
