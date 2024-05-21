@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class QuizPainelComponent implements OnInit {
 
   id: number;
-  selectedOption!: number;
+  selectedOption!: number | undefined;
   playerFindById: Observable<Player>;
   timeoutId: any;
   countdownInterval: any;
@@ -21,6 +21,7 @@ export class QuizPainelComponent implements OnInit {
   showSpinner: boolean = false;
   showResult: boolean = false;
   showConferirResposta: boolean = true;
+  countdownInProgress: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
@@ -31,28 +32,32 @@ export class QuizPainelComponent implements OnInit {
   }
 
   checkAnswer() {
-    if (this.selectedOption !== null) {
-      this.playerService.conferirResposta(this.id, this.selectedOption).subscribe({
-        next: resposta => {
-          const color = resposta ? 'correct-answer' : 'wrong-answer';
-          this.answerColors[this.selectedOption] = color;
+    if (!this.countdownInProgress) {
+      if (this.selectedOption !== undefined && this.selectedOption !== null) {
+        this.countdownInProgress = true;
+        this.playerService.conferirResposta(this.id, this.selectedOption).subscribe({
+          next: resposta => {
+            const color = resposta ? 'correct-answer' : 'wrong-answer';
+            this.answerColors[this.selectedOption!] = color;
 
-          this.playerGerarQuestion();
+            this.playerGerarQuestion();
 
-          this.timeoutId = setTimeout(() => {
-            this.atualizarQuestion();
-          }, 10000);
+            this.timeoutId = setTimeout(() => {
+              this.atualizarQuestion();
+              this.countdownInProgress = false;
+            }, 10000);
 
-          this.finishPerguntasRespondidas();
-          this.showSpinner = true;
-          this.startCountdown();
-        },
-        error: error => {
-          console.error('Ocorreu um erro ao conferir a resposta:', error);
-        }
-      });
-    } else {
-      alert('Selecione uma opção antes de conferir a resposta.');
+            this.finishPerguntasRespondidas();
+            this.showSpinner = true;
+            this.startCountdown();
+          },
+          error: error => {
+            console.error('Ocorreu um erro ao conferir a resposta:', error);
+          }
+        });
+      } else {
+        alert('Selecione uma opção antes de conferir a resposta.');
+      }
     }
   }
 
@@ -68,6 +73,7 @@ export class QuizPainelComponent implements OnInit {
   }
 
   atualizarQuestion() {
+    this.selectedOption = undefined;
     this.playerFindById = this.playerService.findById(this.id);
     this.changeDetectorRef.detectChanges();
   }
@@ -81,8 +87,14 @@ export class QuizPainelComponent implements OnInit {
       clearInterval(this.countdownInterval);
     }
 
+    this.cancelCountdown();
     this.showSpinner = false;
     this.atualizarQuestion();
+  }
+
+  cancelCountdown() {
+    clearInterval(this.countdownInterval);
+    this.countdownInProgress = false;
   }
 
   finishPerguntasRespondidas() {
