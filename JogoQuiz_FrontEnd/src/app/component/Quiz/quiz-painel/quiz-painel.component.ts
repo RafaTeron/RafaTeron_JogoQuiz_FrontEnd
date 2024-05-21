@@ -15,10 +15,12 @@ export class QuizPainelComponent implements OnInit {
   selectedOption!: number;
   playerFindById: Observable<Player>;
   timeoutId: any;
+  countdownInterval: any;
   answerColors: { [key: number]: string } = {};
   countdownValue: number = 10;
   showSpinner: boolean = false;
   showResult: boolean = false;
+  showConferirResposta: boolean = true;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
@@ -75,8 +77,11 @@ export class QuizPainelComponent implements OnInit {
       clearTimeout(this.timeoutId);
     }
 
-    this.showSpinner = false;
+    if (this.countdownInterval !== undefined) {
+      clearInterval(this.countdownInterval);
+    }
 
+    this.showSpinner = false;
     this.atualizarQuestion();
   }
 
@@ -84,6 +89,7 @@ export class QuizPainelComponent implements OnInit {
     this.playerService.verificarLimitePerguntasRespondidas(this.id)
       .subscribe((limite: boolean) => {
         if (limite === false) {
+          this.showConferirResposta = false;
           this.showSpinner = false;
           this.showResult = true;
           this.atualizarQuestion();
@@ -101,11 +107,11 @@ export class QuizPainelComponent implements OnInit {
 
   startCountdown() {
     this.countdownValue = 10;
-    const interval = setInterval(() => {
+    this.countdownInterval = setInterval(() => {
       this.countdownValue--;
       this.changeDetectorRef.detectChanges();
       if (this.countdownValue <= 0) {
-        clearInterval(interval);
+        clearInterval(this.countdownInterval);
         this.showSpinner = false;
       }
     }, 1000);

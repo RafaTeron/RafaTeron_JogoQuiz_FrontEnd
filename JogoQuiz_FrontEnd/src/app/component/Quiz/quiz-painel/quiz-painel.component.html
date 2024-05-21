@@ -3,7 +3,7 @@
     <div class="col-md-6">
 
       <div class="card">
-        <div class="card-body ">
+        <div class="card-body flex-grow-1">
           <div *ngIf="playerFindById | async as player; else loading">
             <ng-container *ngFor="let question of player.question">
               <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
@@ -25,20 +25,20 @@
                 </div>
 
                 <div class="button">
-                  <button (click)="checkAnswer()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
+                  <button *ngIf="showConferirResposta" (click)="checkAnswer()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
                     <strong>Conferir Resposta</strong>
                   </button>
                 </div>
 
                 <div class="button d-flex justify-content-center">
-                  <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-secondary btn-sm ">
+                  <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-warning btn-sm ">
                     <strong>Próximo</strong>
                     <span  id="loading" class="countdown">{{ countdownValue }}</span>
                   </button>
                 </div>
 
                 <div class="button d-flex justify-content-center">
-                  <button *ngIf="showResult" (click)="resultado()" type="button" class="btn btn-secondary btn-sm ">
+                  <button *ngIf="showResult" (click)="resultado()" type="button" class="btn btn-success">
                     <strong>Resultado</strong>
                   </button>
                 </div>
