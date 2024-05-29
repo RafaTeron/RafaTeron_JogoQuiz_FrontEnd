@@ -1,7 +1,7 @@
 
 .card, .card-body {
   box-sizing: border-box;
-  overflow: hidden; /* ou use overflow: auto se preferir */
+  overflow: hidden;
 }
 
 .container {
@@ -28,14 +28,6 @@
   padding: 20px;
 }
 
-.correct-answer {
-  color: green;
-}
-
-.wrong-answer {
-  color: red;
-}
-
 .container {
   padding-top: 10%;
   font-family: 'Courier New', Courier, monospace;
@@ -45,6 +37,11 @@
   color: aliceblue;
   background-color: rgb(121, 146, 173);
   border-radius: 5px;
+}
+
+.radioRespondidas {
+  display: flex;
+  justify-content: space-around;
 }
 
 .card-body {
@@ -106,4 +103,67 @@
   100% {
     border-color: #000000 #000000 #000000 #000000;
   }
+}
+
+.hp-bar {
+  border-radius: 10px;
+  width: 475px;
+  height: 20px;
+  border: 2px solid #000;
+  background-color: #e4dfdf;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.hp-label {
+  position: absolute;
+  left: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hp-fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s ease-in-out;
+}
+
+.hp-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hp-fill.low {
+  background-color: #ff0000;
+}
+
+.hp-fill.medium {
+  background-color: #ffeb3b;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.9s;
 }

@@ -8,11 +8,15 @@
             <ng-container *ngFor="let question of player.question">
               <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
               <form>
-
-                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" [style.width.%]="player.pointScore">{{ player.pointScore }}%</div>
+                <div class="hp-bar">
+                  <strong class="hp-label">HP:</strong>
+                  <div
+                    class="hp-fill"
+                    [ngStyle]="{ width: atualHP + '%' }"
+                    [ngClass]="{ low: atualHP <= 25, medium: atualHP > 25 && atualHP <= 50 }">
+                    <div class="hp-value"><strong>{{ atualHP }}/100</strong></div>
                 </div>
-
+                </div>
                 <div class="form-group">
                   <label>{{ question.questionText }}</label>
                   <div *ngFor="let answer of question.answers | orderBy">
@@ -25,7 +29,8 @@
                 </div>
 
                 <div class="button">
-                  <button *ngIf="showConferirResposta" (click)="checkAnswer()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
+                  <button *ngIf="showConferirResposta" (click)="checkAnswer()" data-mdb-ripple-init type="button"
+                    class="btn btn-primary btn-block">
                     <strong>Conferir Resposta</strong>
                   </button>
                 </div>
@@ -33,7 +38,7 @@
                 <div class="button d-flex justify-content-center">
                   <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-warning btn-sm ">
                     <strong>Próximo</strong>
-                    <span  id="loading" class="countdown">{{ countdownValue }}</span>
+                    <span id="loading" class="countdown">{{ countdownValue }}</span>
                   </button>
                 </div>
 

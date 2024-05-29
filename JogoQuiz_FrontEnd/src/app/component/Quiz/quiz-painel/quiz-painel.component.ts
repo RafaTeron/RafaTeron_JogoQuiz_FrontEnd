@@ -7,29 +7,36 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-quiz-painel',
   templateUrl: './quiz-painel.component.html',
-  styleUrl: './quiz-painel.component.css'
+  styleUrls: ['./quiz-painel.component.css']
 })
 export class QuizPainelComponent implements OnInit {
 
   id: number;
-  selectedOption!: number | undefined;
   playerFindById: Observable<Player>;
+
+  selectedOption!: number | undefined;
+  answerColors: { [key: number]: string } = {};
+
+  atualHP: number = 100;
+
   timeoutId: any;
   countdownInterval: any;
-  answerColors: { [key: number]: string } = {};
   countdownValue: number = 10;
+  countdownInProgress: boolean = false;
+
   showSpinner: boolean = false;
   showResult: boolean = false;
   showConferirResposta: boolean = true;
-  countdownInProgress: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
     this.playerFindById = this.playerService.findById(this.id);
+
+    const storedHP = localStorage.getItem('atualHP');
+    this.atualHP = storedHP ? Number(storedHP) : 100;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   checkAnswer() {
     if (!this.countdownInProgress) {
@@ -39,6 +46,10 @@ export class QuizPainelComponent implements OnInit {
           next: resposta => {
             const color = resposta ? 'correct-answer' : 'wrong-answer';
             this.answerColors[this.selectedOption!] = color;
+
+            if (!resposta) {
+              this.diminuirHP();
+            }
 
             this.playerGerarQuestion();
 
@@ -63,10 +74,9 @@ export class QuizPainelComponent implements OnInit {
 
   playerGerarQuestion() {
     this.playerService.gerarQuetion(this.id).subscribe({
-      next: () => {
-      },
+      next: () => {},
       error: error => {
-        console.error('Ocorreu um erro ao conferir a resposta:', error);
+        console.error('Ocorreu um erro ao gerar a pergunta:', error);
         alert('Erro ao gerar a pergunta.');
       }
     });
@@ -109,7 +119,8 @@ export class QuizPainelComponent implements OnInit {
       });
   }
 
-  resultado(){
+  resultado() {
+    localStorage.removeItem('atualHP');
     this.router.navigate(['/Finish']);
   }
 
@@ -128,4 +139,25 @@ export class QuizPainelComponent implements OnInit {
       }
     }, 1000);
   }
+
+  diminuirHP() {
+    if (this.atualHP > 0) {
+      this.atualHP -= 10;
+      if (this.atualHP < 0) {
+        this.atualHP = 0;
+      }
+      localStorage.setItem('atualHP', String(this.atualHP));
+      this.shakeHPBar();
+      this.changeDetectorRef.detectChanges();
+    }
+  }
+
+  shakeHPBar() {
+    const hpBar = document.querySelector('.hp-bar') as HTMLElement;
+    hpBar.classList.add('shake');
+    setTimeout(() => {
+      hpBar.classList.remove('shake');
+    }, 900);
+  }
+
 }
