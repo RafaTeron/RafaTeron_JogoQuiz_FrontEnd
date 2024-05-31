@@ -6,7 +6,6 @@
 
 .container {
   padding-top: 10%;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .card-title {
@@ -18,7 +17,8 @@
 .button {
   display: flex;
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 10px ;
+  cursor: pointer;
 }
 
 .card-body {
@@ -37,11 +37,6 @@
   color: aliceblue;
   background-color: rgb(121, 146, 173);
   border-radius: 5px;
-}
-
-.radioRespondidas {
-  display: flex;
-  justify-content: space-around;
 }
 
 .card-body {
@@ -107,9 +102,9 @@
 
 .hp-bar {
   border-radius: 10px;
-  width: 475px;
+  width: auto;
   height: 20px;
-  border: 2px solid #000;
+  border: 2px solid #534e4e;
   background-color: #e4dfdf;
   position: relative;
   overflow: hidden;
@@ -125,6 +120,14 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.hp-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .hp-fill {
   display: flex;
   justify-content: center;
@@ -134,26 +137,12 @@
   transition: width 0.5s ease-in-out;
 }
 
-.hp-value {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .hp-fill.low {
   background-color: #ff0000;
 }
 
 .hp-fill.medium {
   background-color: #ffeb3b;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
 @keyframes shake {

@@ -18,14 +18,18 @@
                 </div>
                 </div>
                 <div class="form-group">
-                  <label>{{ question.questionText }}</label>
+                  <label><strong>{{ question.questionText }}</strong></label>
                   <div *ngFor="let answer of question.answers | orderBy">
                     <input type="radio" name="question{{ question.id }}" [value]="answer.id"
                       [(ngModel)]="selectedOption">
                     <label [ngClass]="getAnswerColor(answer.id)">
-                      {{ answer.answerText }}
+                      <strong>{{ answer.answerText }}</strong>
                     </label>
                   </div>
+                </div>
+
+                <div class="descricao" *ngFor="let answer of question.answers">
+                  <label *ngIf="showDescricao"><strong>{{ answer.descricao }}</strong></label>
                 </div>
 
                 <div class="button">

@@ -27,6 +27,7 @@ export class QuizPainelComponent implements OnInit {
   showSpinner: boolean = false;
   showResult: boolean = false;
   showConferirResposta: boolean = true;
+  showDescricao: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = 1;
@@ -59,8 +60,10 @@ export class QuizPainelComponent implements OnInit {
             }, 10000);
 
             this.finishPerguntasRespondidas();
-            this.showSpinner = true;
             this.startCountdown();
+
+            this.showSpinner = true;
+            this.showDescricao = true;
           },
           error: error => {
             console.error('Ocorreu um erro ao conferir a resposta:', error);
@@ -99,6 +102,8 @@ export class QuizPainelComponent implements OnInit {
 
     this.cancelCountdown();
     this.showSpinner = false;
+    this.showDescricao = false;
+
     this.atualizarQuestion();
   }
 
@@ -135,6 +140,7 @@ export class QuizPainelComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
       if (this.countdownValue <= 0) {
         clearInterval(this.countdownInterval);
+        this.showDescricao = false;
         this.showSpinner = false;
       }
     }, 1000);
