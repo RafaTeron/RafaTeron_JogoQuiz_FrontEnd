@@ -166,4 +166,19 @@ export class QuizPainelComponent implements OnInit {
     }, 900);
   }
 
+  getBackgroundImage(category: string): string {
+    const imageMap: { [key: string]: string } = {
+      'CIENCIA': 'assets/Categoria/Ciencia.jpg',
+      'ESPORTE': 'assets/Categoria/Esporte.jpg',
+      'ENTRETENIMENTO': 'assets/Categoria/Entretenimento.jpg',
+      'HISTORIA': 'assets/Categoria/Historia.jpg',
+      'GEOGRAFIA': 'assets/Categoria/Geografia.jpg',
+      'ATUALIDADE': 'assets/Categoria/Atualidade.jpg',
+      'TECNOLOGIA': 'assets/Categoria/Tecnologia.jpg',
+      'MEIO_AMBIENTE': 'assets/Categoria/MeioAmbiente.jpg',
+      'MITOS_E_LENDAS': 'assets/Categoria/MitosELendas.jpg',
+      'CULINARIA': 'assets/Categoria/Culinaria.webp'
+    };
+    return imageMap[category] || 'assets/default.jpg';
+  }
 }

@@ -1,23 +1,31 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body flex-grow-1">
-          <div *ngIf="playerFindById | async as player">
-            <h5 class="card-title text-center"><strong>Pontuação</strong></h5>
+<div class="background-image">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body flex-grow-1">
+            <div *ngIf="playerFindById | async as player">
+              <h5 class="card-title text-center"><strong>Pontuação</strong></h5>
 
-            <div class="diamond-wrapper">
-              <div class="diamond-border"></div>
-              <div class="diamond">
-                <div class="diamond2-border"></div>
-                <div class="text"><strong>{{ player.pointScore }}</strong></div>
+              <div class="incentivo-text">
+                <strong>{{ getIncentivoText(player.pointScore) }}</strong>
               </div>
-            </div>
 
-            <div class="button">
-              <button (click)="novoJogo()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
-                <strong>Novo Jogo</strong>
-              </button>
+              <div class="diamond-wrapper">
+                <div class="diamond-border"></div>
+                <div class="diamond">
+                  <div class="diamond2-border"></div>
+                  <div class="text" [ngClass]="getHpClass(player.pointScore)">
+                    <strong>{{ player.pointScore }}</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="button">
+                <button (click)="novoJogo()" data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
+                  <strong>Novo Jogo</strong>
+                </button>
+              </div>
             </div>
           </div>
         </div>

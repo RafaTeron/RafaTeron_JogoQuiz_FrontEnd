@@ -22,6 +22,14 @@
   padding: 20px;
 }
 
+.background-image {
+  background-image: url('/assets/Premiação/Premiacao3.jpg');
+  background-size: 100% 100%; /* This will cover the entire element */
+  background-position: center; /* This will center the image */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  height: 100vh; /* Ocupa a altura total da janela de visualização */
+}
+
 .diamond-wrapper {
   display: flex;
   justify-content: center;
@@ -45,7 +53,7 @@
 .diamond-border {
   width: 150px;
   height: 150px;
-  border: 5px dashed #debf12;
+  border: 5px dashed #615308;
   position: relative;
   animation: spin 15s linear infinite;
 }
@@ -53,7 +61,7 @@
 .diamond2-border {
   width: 150px;
   height: 150px;
-  border: 5px dashed #debf12;
+  border: 5px dashed #615308;
   position: relative;
   animation: spin 15s linear infinite;
 }
@@ -67,6 +75,18 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.diamond .text.low {
+  color: #ff0000; /* Red for low score */
+}
+
+.diamond .text.medium {
+  color: #ffeb3b; /* Yellow for medium score */
+}
+
+.diamond .text.high {
+  color: #4caf50; /* Green for high score */
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -74,4 +94,10 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.incentivo-text {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }

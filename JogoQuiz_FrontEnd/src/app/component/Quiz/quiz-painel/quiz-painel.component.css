@@ -4,6 +4,14 @@
   overflow: hidden;
 }
 
+.background-image {
+  background-image: url('/assets/Categoria');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
 .container {
   padding-top: 10%;
 }

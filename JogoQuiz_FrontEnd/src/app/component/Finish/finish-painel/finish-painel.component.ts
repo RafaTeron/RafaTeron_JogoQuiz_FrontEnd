@@ -53,5 +53,25 @@ export class FinishPainelComponent implements OnInit {
     this.router.navigate(['/Quiz']);
   }
 
+  getHpClass(pointScore: number): string {
+    if (pointScore <= 30) {
+      return 'low';
+    } else if (pointScore <= 50) {
+      return 'medium';
+    } else {
+      return 'high';
+    }
+  }
 
+  getIncentivoText(pointScore: number): string {
+    if (pointScore <= 30) {
+      return "Não desanime! Cada passo que você dá é um aprendizado.";
+    } else if (pointScore <= 50) {
+      return "Você está quase lá! Continue assim, o sucesso está ao seu alcance.";
+    } else if (pointScore <= 90) {
+      return "Parabéns! Sua persistência está realmente compensando.";
+    } else {
+      return "Fantástico! Você atingiu a pontuação máxima. Excelente trabalho!";
+    }
+  }
 }

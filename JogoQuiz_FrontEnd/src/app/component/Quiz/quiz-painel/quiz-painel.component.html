@@ -1,70 +1,63 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-
-      <div class="card">
-        <div class="card-body flex-grow-1">
-          <div *ngIf="playerFindById | async as player; else loading">
-            <ng-container *ngFor="let question of player.question">
-              <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
-              <form>
-                <div class="hp-bar">
-                  <strong class="hp-label">HP:</strong>
-                  <div
-                    class="hp-fill"
-                    [ngStyle]="{ width: atualHP + '%' }"
-                    [ngClass]="{ low: atualHP <= 25, medium: atualHP > 25 && atualHP <= 50 }">
-                    <div class="hp-value"><strong>{{ atualHP }}/100</strong></div>
-                </div>
-                </div>
-                <div class="form-group">
-                  <label><strong>{{ question.questionText }}</strong></label>
-                  <div *ngFor="let answer of question.answers | orderBy">
-                    <input type="radio" name="question{{ question.id }}" [value]="answer.id"
-                      [(ngModel)]="selectedOption">
-                    <label [ngClass]="getAnswerColor(answer.id)">
-                      <strong>{{ answer.answerText }}</strong>
-                    </label>
+<div *ngIf="playerFindById | async as player; else loading">
+  <div class="background-image" [ngStyle]="{'background-image': 'url(' + getBackgroundImage(player.question[0].category) + ')'}">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body flex-grow-1">
+              <ng-container *ngFor="let question of player.question">
+                <h5 class="card-title text-center"><strong>{{ question.category }}</strong></h5>
+                <form>
+                  <div class="hp-bar">
+                    <strong class="hp-label">HP:</strong>
+                    <div class="hp-fill" [ngStyle]="{ width: atualHP + '%' }"
+                      [ngClass]="{ low: atualHP <= 30, medium: atualHP > 30 && atualHP <= 50 }">
+                      <div class="hp-value"><strong>{{ atualHP }}/100</strong></div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="descricao" *ngFor="let answer of question.answers">
-                  <label *ngIf="showDescricao"><strong>{{ answer.descricao }}</strong></label>
-                </div>
-
-                <div class="button">
-                  <button *ngIf="showConferirResposta" (click)="checkAnswer()" data-mdb-ripple-init type="button"
-                    class="btn btn-primary btn-block">
-                    <strong>Conferir Resposta</strong>
-                  </button>
-                </div>
-
-                <div class="button d-flex justify-content-center">
-                  <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-warning btn-sm ">
-                    <strong>Próximo</strong>
-                    <span id="loading" class="countdown">{{ countdownValue }}</span>
-                  </button>
-                </div>
-
-                <div class="button d-flex justify-content-center">
-                  <button *ngIf="showResult" (click)="resultado()" type="button" class="btn btn-success">
-                    <strong>Resultado</strong>
-                  </button>
-                </div>
-              </form>
-            </ng-container>
-          </div>
-        </div>
-
-        <ng-template #loading>
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border m-5 text-primary" role="status">
-              <span class="visually-hidden">Carregando...</span>
+                  <div class="form-group">
+                    <label><strong>{{ question.questionText }}</strong></label>
+                    <div *ngFor="let answer of question.answers | orderBy">
+                      <input type="radio" name="question{{ question.id }}" [value]="answer.id"
+                        [(ngModel)]="selectedOption">
+                      <label [ngClass]="getAnswerColor(answer.id)">
+                        <strong>{{ answer.answerText }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="descricao" *ngFor="let answer of question.answers">
+                    <label *ngIf="showDescricao"><strong>{{ answer.descricao }}</strong></label>
+                  </div>
+                  <div class="button">
+                    <button *ngIf="showConferirResposta" (click)="checkAnswer()" data-mdb-ripple-init type="button"
+                      class="btn btn-primary btn-block">
+                      <strong>Conferir Resposta</strong>
+                    </button>
+                  </div>
+                  <div class="button d-flex justify-content-center">
+                    <button *ngIf="showSpinner" (click)="proximo()" type="button" class="btn btn-warning btn-sm ">
+                      <strong>Próximo</strong>
+                      <span id="loading" class="countdown">{{ countdownValue }}</span>
+                    </button>
+                  </div>
+                  <div class="button d-flex justify-content-center">
+                    <button *ngIf="showResult" (click)="resultado()" type="button" class="btn btn-success">
+                      <strong>Resultado</strong>
+                    </button>
+                  </div>
+                </form>
+              </ng-container>
             </div>
           </div>
-        </ng-template>
-
+        </div>
       </div>
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5 text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+  </div>
+</ng-template>
