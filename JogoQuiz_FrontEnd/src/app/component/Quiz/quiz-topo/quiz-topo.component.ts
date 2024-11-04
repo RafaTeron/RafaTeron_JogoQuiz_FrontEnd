@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Player } from '../../../model/player';
 import { PlayerService } from '../../../service/Player/player.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../service/Login/login.service';
 
 @Component({
   selector: 'app-quiz-topo',
@@ -16,7 +17,7 @@ export class QuizTopoComponent implements OnInit {
 
   atualHP: number = 100;
 
-  constructor(private playerService: PlayerService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private playerService: PlayerService, private loginService: LoginService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {
     this.id = 1;
     this.playerFindById = this.playerService.findById(this.id);
   }
@@ -55,5 +56,10 @@ export class QuizTopoComponent implements OnInit {
 
   retornarQuiz() {
     this.router.navigate(['/Quiz']);
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/Login']);
   }
 }
