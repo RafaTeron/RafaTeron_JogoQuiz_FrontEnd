@@ -21,7 +21,7 @@ export class QuizPainelComponent implements OnInit {
 
   timeoutId: any;
   countdownInterval: any;
-  countdownValue: number = 10;
+  countdownValue: number = 60;
   countdownInProgress: boolean = false;
 
   showSpinner: boolean = false;
@@ -57,7 +57,7 @@ export class QuizPainelComponent implements OnInit {
             this.timeoutId = setTimeout(() => {
               this.atualizarQuestion();
               this.countdownInProgress = false;
-            }, 10000);
+            }, 60000);
 
             this.finishPerguntasRespondidas();
             this.startCountdown();
@@ -134,7 +134,7 @@ export class QuizPainelComponent implements OnInit {
   }
 
   startCountdown() {
-    this.countdownValue = 10;
+    this.countdownValue = 60;
     this.countdownInterval = setInterval(() => {
       this.countdownValue--;
       this.changeDetectorRef.detectChanges();
@@ -167,6 +167,7 @@ export class QuizPainelComponent implements OnInit {
   }
 
   getBackgroundImage(category: string): string {
+
     const imageMap: { [key: string]: string } = {
       'CIENCIA': 'assets/Categoria/Ciencia.jpg',
       'ESPORTE': 'assets/Categoria/Esporte.jpg',

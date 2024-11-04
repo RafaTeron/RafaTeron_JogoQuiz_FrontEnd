@@ -78,7 +78,7 @@
   border-radius: 50%;
   border: 2px solid transparent;
   border-top-color: #000000;
-  animation: spinner 10s linear infinite;
+  animation: spinner 60s linear infinite;
 }
 
 .countdown {
@@ -92,7 +92,7 @@
 
 @keyframes spinner {
   0% {
-    border-color: #000000 #000000 #000000 #000000;
+    border-color: #000000 transparent transparent transparent;
   }
   25% {
     border-color: #000000 transparent transparent transparent;

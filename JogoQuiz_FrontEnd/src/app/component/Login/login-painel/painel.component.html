@@ -1,37 +1,42 @@
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-center"><strong>Login</strong></h5>
-            <form>
-              <div class="form-group">
-                <label for="email"><strong>Email</strong></label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Seu email"
-                />
-              </div>
-              <div class="form-group">
-                <label for="senha"><strong>Senha</strong></label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="senha"
-                  placeholder="Sua senha"
-                />
-              </div>
-              <div class="button">
-                <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block">
-                  <a routerLink="/Quiz" class="navbar-brand mb-0"><strong>Entrar</strong></a>
-                </button>
-              </div>
-            </form>
-          </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center"><strong>Login</strong></h5>
+          <form (ngSubmit)="onLogin()">
+            <div class="form-group">
+              <label for="usuario"><strong>Usuário</strong></label>
+              <input
+                type="text"
+                class="form-control"
+                id="usuario"
+                [(ngModel)]="usuario"
+                name="usuario"
+                placeholder="Seu usuário"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="senha"><strong>Senha</strong></label>
+              <input
+                type="password"
+                class="form-control"
+                id="senha"
+                [(ngModel)]="senha"
+                name="senha"
+                placeholder="Sua senha"
+                required
+              />
+            </div>
+            <div class="button">
+              <button type="submit" class="btn btn-primary btn-block">
+                <strong>Entrar</strong>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

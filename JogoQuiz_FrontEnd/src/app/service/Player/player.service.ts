@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PlayerService {
 
-  private readonly API = 'quiz/players';
+  private readonly API = '/app-quiz/quiz/players/';
 
   constructor(private httpClient: HttpClient) { }
 

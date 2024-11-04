@@ -1,7 +1,7 @@
 const PROXY_CONFIG = [
   {
-    context: ['/quiz'],
-    target:'http://localhost:8080/',
+    context: ['/auth', '/app-quiz'],
+    target:'http://localhost:8765/',
     secure: false,
     logLevel: 'debug'
   }
