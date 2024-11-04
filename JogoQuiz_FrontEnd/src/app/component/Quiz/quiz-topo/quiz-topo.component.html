@@ -1,0 +1,10 @@
+<nav class="navbar bg-dark navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <div *ngIf="playerFindById | async as player">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button (click)="novoJogo()" type="button" class="btn btn-success"><strong>Resetar</strong></button>
+      <button type="button" class="btn btn-danger">Left</button>
+    </div>
+  </div>
+  </div>
+</nav>

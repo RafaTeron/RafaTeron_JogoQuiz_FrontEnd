@@ -12,10 +12,7 @@ import { Router } from '@angular/router';
 export class FinishPainelComponent implements OnInit {
 
   id: number;
-  selectedOption!: number;
   playerFindById: Observable<Player>;
-  timeoutId: any;
-  answerColors: { [key: number]: string } = {};
 
   constructor(private playerService: PlayerService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {
     this.id = 1;
