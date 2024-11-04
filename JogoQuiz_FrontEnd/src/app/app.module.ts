@@ -17,14 +17,25 @@ import { OrderByPipe } from './shared/Pipes/order-by.pipe';
 import { FinishFolderComponent } from './component/Finish/finish-folder/finish-folder.component';
 import { FinishPainelComponent } from './component/Finish/finish-painel/finish-painel.component';
 import { FinishRootComponent } from './component/Finish/finish-root/finish-root.component';
-import { FinishTopoComponent } from './component/Finish/finish-topo/finish-topo.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { HomeTopComponent } from './component/Home/home-top/home-top.component';
+import { HomePainelComponent } from './component/Home/home-painel/home-painel.component';
+import { HomeRootComponent } from './component/Home/home-root/home-root.component';
+import { RegisterPainelComponent } from './component/Register/register-painel/register-painel.component';
+import { RegisterRootComponent } from './component/Register/register-root/register-root.component';
+import { RegisterTopComponent } from './component/Register/register-top/register-top.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeTopComponent,
+    HomePainelComponent,
+    HomeRootComponent,
+    RegisterPainelComponent,
+    RegisterRootComponent,
+    RegisterTopComponent,
     LoginTopoComponent,
     LoginPainelComponent,
     LoginFooterComponent,
@@ -36,7 +47,6 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     FinishFolderComponent,
     FinishPainelComponent,
     FinishRootComponent,
-    FinishTopoComponent,
     OrderByPipe
   ],
   imports: [
@@ -47,7 +57,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     FormsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Configuração do interceptor
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
