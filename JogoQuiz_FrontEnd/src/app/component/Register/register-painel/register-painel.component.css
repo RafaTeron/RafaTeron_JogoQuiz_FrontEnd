@@ -1,0 +1,7 @@
+.background-image {
+  background-image: url("/assets/Home/quiz-game.webp");
+  background-size: cover; /* ou 100% 100% */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Verifique se isso está presente */
+}

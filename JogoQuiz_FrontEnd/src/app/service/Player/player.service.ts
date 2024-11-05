@@ -17,6 +17,11 @@ export class PlayerService {
     return this.httpClient.get<Player>(url);
   }
 
+  register(player: Player) {
+    const url = `${this.API}/register`
+    return this.httpClient.post<Player>(url,{player});
+  }
+
   conferirResposta(id: number, opcao: number): Observable<boolean> {
     const url = `${this.API}/${id}/conferirResposta`;
     return this.httpClient.get<boolean>(url, { params: { opcao: opcao.toString() } });

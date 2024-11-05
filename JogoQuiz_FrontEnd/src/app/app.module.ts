@@ -21,6 +21,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { RegisterPainelComponent } from './component/Register/register-painel/register-painel.component';
 import { RegisterRootComponent } from './component/Register/register-root/register-root.component';
 import { RegisterTopComponent } from './component/Register/register-top/register-top.component';
+import { RegisterFooterComponent } from './component/Register/register-footer/register-footer.component';
 
 
 
@@ -30,6 +31,7 @@ import { RegisterTopComponent } from './component/Register/register-top/register
     RegisterPainelComponent,
     RegisterRootComponent,
     RegisterTopComponent,
+    RegisterFooterComponent,
     LoginTopoComponent,
     LoginPainelComponent,
     LoginFooterComponent,

@@ -1,0 +1,13 @@
+nav{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand{
+  padding-left: 15px;
+  font-size: 18px;
+}
