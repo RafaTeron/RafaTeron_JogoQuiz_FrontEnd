@@ -2,13 +2,17 @@
     padding-top: 10%;
     font-family: 'Courier New', Courier, monospace;
   }
-  
+
+  .card {
+    opacity: 0.95; /* 80% opaco, 20% transparente */
+  }
+
   .card-title{
     color: aliceblue;
     background-color: rgb(121, 146, 173);
     border-radius: 5px;
   }
-  
+
   .button{
     display: flex;
     justify-content: center;
@@ -19,5 +23,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 300px; 
+    height: 300px;
   }
+
+  .background-image {
+    background-image: url("/assets/Home/quiz-game.webp");
+    background-size: cover; /* ou 100% 100% */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Verifique se isso está presente */
+  }
+

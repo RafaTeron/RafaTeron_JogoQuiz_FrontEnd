@@ -18,9 +18,6 @@ import { FinishFolderComponent } from './component/Finish/finish-folder/finish-f
 import { FinishPainelComponent } from './component/Finish/finish-painel/finish-painel.component';
 import { FinishRootComponent } from './component/Finish/finish-root/finish-root.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
-import { HomeTopComponent } from './component/Home/home-top/home-top.component';
-import { HomePainelComponent } from './component/Home/home-painel/home-painel.component';
-import { HomeRootComponent } from './component/Home/home-root/home-root.component';
 import { RegisterPainelComponent } from './component/Register/register-painel/register-painel.component';
 import { RegisterRootComponent } from './component/Register/register-root/register-root.component';
 import { RegisterTopComponent } from './component/Register/register-top/register-top.component';
@@ -30,9 +27,6 @@ import { RegisterTopComponent } from './component/Register/register-top/register
 @NgModule({
   declarations: [
     AppComponent,
-    HomeTopComponent,
-    HomePainelComponent,
-    HomeRootComponent,
     RegisterPainelComponent,
     RegisterRootComponent,
     RegisterTopComponent,
