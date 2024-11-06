@@ -29,6 +29,8 @@ export class QuizPainelComponent implements OnInit {
   showConferirResposta: boolean = true;
   showDescricao: boolean = false;
 
+  errorMessage: string = '';
+
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.id = Number(localStorage.getItem('playerId'));
     this.playerFindById = this.playerService.findById(this.id);
@@ -70,7 +72,7 @@ export class QuizPainelComponent implements OnInit {
           }
         });
       } else {
-        alert('Selecione uma opção antes de conferir a resposta.');
+        this.errorMessage = 'Selecione uma opção antes de conferir a resposta.';
       }
     }
   }
@@ -80,7 +82,7 @@ export class QuizPainelComponent implements OnInit {
       next: () => {},
       error: error => {
         console.error('Ocorreu um erro ao gerar a pergunta:', error);
-        alert('Erro ao gerar a pergunta.');
+        this.errorMessage = 'Erro ao gerar a pergunta.';
       }
     });
   }

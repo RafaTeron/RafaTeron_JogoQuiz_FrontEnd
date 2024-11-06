@@ -35,8 +35,6 @@ export class RegisterPainelComponent {
   }
 
   registerPlayer() {
-    console.log('Attempting to register with:', this.player.usuario, this.player.password);
-
     if (!this.requisitosUsuarioForm()) {
       return;
     }
