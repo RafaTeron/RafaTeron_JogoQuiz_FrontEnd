@@ -42,16 +42,12 @@ export class RegisterPainelComponent {
       return;
     }
 
-    if (!this.player.password || this.player.password.length < 6) {
-      alert('A senha precisa ter pelo menos 6 caracteres.');
-      return;
-    }
-
     if (this.isPasswordMatch()) {
       this.passwordMismatch = false;
       this.playerService.register(this.player).subscribe({
         next: (response) => {
           if (response) {
+            location.reload();
             alert('Registro concluído com sucesso!');
           }
         },
