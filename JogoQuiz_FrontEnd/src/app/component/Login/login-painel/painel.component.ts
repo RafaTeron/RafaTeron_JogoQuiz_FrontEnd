@@ -11,6 +11,8 @@ export class LoginPainelComponent {
   usuario: string = '';
   senha: string = '';
 
+  errorMessage: string = '';
+
   constructor(private loginService: LoginService, private router: Router) {}
 
   onLogin() {
@@ -18,7 +20,7 @@ export class LoginPainelComponent {
 
     this.loginService.login(this.usuario, this.senha).subscribe({
       next: () => this.router.navigate(['/Quiz']),
-      error: () => alert('Login falhou, verifique suas credenciais')
+      error: () => this.errorMessage = 'Login falhou, verifique suas credenciais.'
     });
   }
 }

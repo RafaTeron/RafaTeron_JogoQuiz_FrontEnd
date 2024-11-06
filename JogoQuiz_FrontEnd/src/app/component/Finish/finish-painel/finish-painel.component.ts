@@ -23,6 +23,19 @@ export class FinishPainelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sair() {
+    this.playerService.resetQuizPlayer(this.id).subscribe({
+      next: () => {
+        this.playerGerarQuestion();
+        this.logout();
+      },
+      error: error => {
+        console.error('Ocorreu um erro ao resetar:', error);
+        alert('Erro ao resetar.');
+      }
+    });
+  }
+
   novoJogo() {
     this.playerService.resetQuizPlayer(this.id).subscribe({
       next: () => {

@@ -7,12 +7,19 @@
   color: aliceblue;
   background-color: rgb(121, 146, 173);
   border-radius: 5px;
+  text-shadow: -1px -1px 0 #2e2b2b, 1px -1px 0 #2e2b2b, -1px 1px 0 #2e2b2b, 1px 1px 0 #2e2b2b;
+
 }
 
 .button {
   display: flex;
   justify-content: center;
   padding-top: 10px;
+}
+
+.card {
+  width: 100%;
+  opacity: 0.80;
 }
 
 .card-body {
@@ -23,11 +30,11 @@
 }
 
 .background-image {
-  background-image: url('/assets/Premiação/Premiacao3.jpg');
-  background-size: 100% 100%; /* This will cover the entire element */
-  background-position: center; /* This will center the image */
-  background-repeat: no-repeat; /* This will prevent the image from repeating */
-  height: 100vh; /* Ocupa a altura total da janela de visualização */
+  background-image: url('/assets/Premiação/end.jpeg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .diamond-wrapper {
