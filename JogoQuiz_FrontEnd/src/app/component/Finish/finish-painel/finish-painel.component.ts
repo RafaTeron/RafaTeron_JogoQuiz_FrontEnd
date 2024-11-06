@@ -16,7 +16,7 @@ export class FinishPainelComponent implements OnInit {
   playerFindById: Observable<Player>;
 
   constructor(private playerService: PlayerService, private loginService: LoginService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {
-    this.id = 1;
+    this.id = Number(localStorage.getItem('playerId'));
     this.playerFindById = this.playerService.findById(this.id);
   }
 
