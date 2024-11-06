@@ -6,13 +6,14 @@ import { tap } from 'rxjs/operators';
 
 interface LoginResponse {
   token: string;
+  playerId: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private readonly API_URL = 'http://localhost:8765/auth/login'; // Ajuste o URL conforme necessário
+  private readonly API_URL = 'http://localhost:8765/auth/login';
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +25,7 @@ export class LoginService {
     return this.http.post<LoginResponse>(this.API_URL, body).pipe(
       tap(response => {
         localStorage.setItem('authToken', response.token);
+        localStorage.setItem('playerId', response.playerId.toString());
       })
     );
   }

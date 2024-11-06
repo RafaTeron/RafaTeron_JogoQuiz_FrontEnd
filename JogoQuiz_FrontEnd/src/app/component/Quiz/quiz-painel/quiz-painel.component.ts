@@ -30,7 +30,7 @@ export class QuizPainelComponent implements OnInit {
   showDescricao: boolean = false;
 
   constructor(private playerService: PlayerService, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
-    this.id = 1;
+    this.id = Number(localStorage.getItem('playerId'));
     this.playerFindById = this.playerService.findById(this.id);
 
     const storedHP = localStorage.getItem('atualHP');
