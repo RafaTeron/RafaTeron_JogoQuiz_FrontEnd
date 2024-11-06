@@ -25,6 +25,9 @@ export class RegisterPainelComponent {
   senhaRepeat: string = '';
   passwordMismatch: boolean = false;
 
+  successMessage: string = '';
+  errorMessage: string = '';
+
   constructor(private playerService: PlayerService) { }
 
   isPasswordMatch(): boolean {
@@ -47,27 +50,37 @@ export class RegisterPainelComponent {
       this.playerService.register(this.player).subscribe({
         next: (response) => {
           if (response) {
-            location.reload();
-            alert('Registro concluído com sucesso!');
+             this.player = {
+              id: 0,
+              name: '',
+              usuario: '',
+              password: '',
+              pointScore: 0,
+              question: [],
+              questionRespondidas: [],
+              roles: Role.USER
+            };
+            this.senhaRepeat = '';
+            this.successMessage = 'Registro concluído com sucesso!';
           }
         },
         error: (error) => {
           if (error.status === 400) {
-            alert('Usuário já existe!');
+            this.errorMessage = 'Usuário já existe!';
           } else {
-            alert('Erro inesperado ao tentar registrar');
+            this.errorMessage = 'Erro inesperado ao tentar registrar';
           }
         }
       });
     } else {
       this.passwordMismatch = true;
-      alert('As senhas não coincidem!');
+      this.errorMessage = 'As senhas não coincidem!';
     }
   }
 
   requisitosUsuarioForm(): boolean {
     if (!this.player.usuario || this.player.usuario.length < 4) {
-      alert('O nome de usuário precisa ter pelo menos 4 caracteres.');
+      this.errorMessage = 'O nome de usuário precisa ter pelo menos 4 caracteres.';
       return false;
     }
     return true;
@@ -75,7 +88,7 @@ export class RegisterPainelComponent {
 
   requisitosPasswordForm(): boolean {
     if (!this.player.password || this.player.password.length < 6) {
-      alert('A senha precisa ter pelo menos 6 caracteres.');
+      this.errorMessage = 'A senha precisa ter pelo menos 6 caracteres.';
       return false;
     }
     return true;
