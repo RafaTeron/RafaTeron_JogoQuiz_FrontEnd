@@ -1,3 +1,4 @@
+import { Role } from "./enum/role";
 import { Question } from "./question";
 
 export interface Player {
@@ -8,4 +9,5 @@ export interface Player {
   pointScore: number;
   question: Question[];
   questionRespondidas: string[];
+  roles: Role;
 }

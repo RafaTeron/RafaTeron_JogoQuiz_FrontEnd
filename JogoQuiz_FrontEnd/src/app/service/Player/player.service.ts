@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PlayerService {
 
-  private readonly API = '/app-quiz/quiz/players/';
+  private readonly API = '/app-quiz/quiz/players';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class PlayerService {
 
   register(player: Player) {
     const url = `${this.API}/register`
-    return this.httpClient.post<Player>(url,{player});
+    return this.httpClient.post<Player>(url,player);
   }
 
   conferirResposta(id: number, opcao: number): Observable<boolean> {

@@ -1,7 +1,36 @@
+.container {
+  padding-top: 10%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card {
+  opacity: 0.95;
+  width: 100%;
+}
+
+.card-title {
+  color: rgb(248, 248, 248);
+  background-color: rgb(121, 146, 173);
+  border-radius: 5px;
+  text-shadow: -1px -1px 0 #2e2b2b, 1px -1px 0 #2e2b2b, -1px 1px 0 #2e2b2b, 1px 1px 0 #2e2b2b;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaçamento entre os elementos do form */
+}
+
 .background-image {
   background-image: url("/assets/Home/quiz-game.webp");
-  background-size: cover; /* ou 100% 100% */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Verifique se isso está presente */
+  height: 100vh;
 }

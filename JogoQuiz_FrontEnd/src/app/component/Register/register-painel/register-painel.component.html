@@ -1,3 +1,36 @@
 <div class="background-image">
-
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center"><strong>Cadastrar</strong></h5>
+            <form (ngSubmit)="registerPlayer()">
+              <div class="form-group">
+                <label for="nome"><strong>Nome</strong></label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" [(ngModel)]="player.name" required />
+              </div>
+              <div class="form-group">
+                <label for="usuario"><strong>Usuário(Login)</strong></label>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Seu usuário" [(ngModel)]="player.usuario" required minlength="4"/>
+              </div>
+              <div class="form-group">
+                <label for="senha"><strong>Senha</strong></label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Sua senha" [(ngModel)]="player.password" required minlength="6" />
+              </div>
+              <div class="form-group">
+                <label for="senha-repeat"><strong>Repita sua senha</strong></label>
+                <input type="password" class="form-control" id="senha-repeat" name="senha-repeat" placeholder="Repita sua senha" [(ngModel)]="senhaRepeat" required />
+              </div>
+              <div class="button">
+                <button type="submit" class="btn btn-primary btn-block">
+                  <strong>Finalizar Cadastro</strong>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
