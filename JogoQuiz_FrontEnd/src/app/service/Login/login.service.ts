@@ -13,7 +13,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  private readonly API_URL = 'http://deploy-gateway-service-production.up.railway.app/auth/login';
+  private readonly API_URL = 'https://deploy-gateway-service-production.up.railway.app/auth/login';
 
   constructor(private http: HttpClient) {}
 
