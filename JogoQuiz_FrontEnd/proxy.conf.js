@@ -1,7 +1,7 @@
 const PROXY_CONFIG = [
   {
     context: ['/auth', '/app-quiz'],
-    target:'http://localhost:8765/',
+    target:'https://deploy-gateway-service-production.up.railway.app',
     secure: false,
     logLevel: 'debug'
   }
